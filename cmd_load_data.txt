@@ -1,0 +1,19 @@
+osm2pgrouting.exe -clean = 1 -f bretagne-latest.osm -d postgis_22_sample
+-p 5432 -h localhost -c mapconfig_for_cars.xml
+
+Funguje na moje data:
+osm2pgsql -c -d postgis_skuska -U postgres -W -H localhost -P 5432 -S C:\osm2pgsql-bin\default.style map.osm
+
+Hanka data:
+osm2pgsql -c -d Zadanie_postgis -U postgres -W -H localhost -P 5432 -S C:\osm2pgsql-bin\default.style slovakia-latest.osm.pbf
+
+ogr2ogr -f PostgreSQL "PG:user=postgres password=postgres dbname=BA_kraj" INSPIRE_AU.gpkg -lco LAUNDER=NO
+
+
+ogr2ogr -overwrite -f "PostgreSQL" PG:"host=localhost user=postgres dbname=inspire password=postgres port=5432" "INSPIRE_AU.gpkg" -nlt MULTIPOLYGON
+
+DB projekt:
+osm2pgsql -c -d Projekt_DB -U postgres -W -H localhost -P 5432 -S C:\osm2pgsql-bin\default.style slovakia-latest.osm.pbf
+
+shp2pgsql -s 4326 -I ne_50m_ocean.shp redlining  \
+| psql  -d Projekt_DB -U <postgres>
