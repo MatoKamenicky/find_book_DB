@@ -68,4 +68,4 @@ This database management system is designed to handle information related to dis
    - Regularly backup the database to prevent data loss in case of accidental deletions or system failures.
 
 7. **Documentation Updates:**
-   - Keep the documentation updated as the database evolves, ensuring that it accurately reflects the structure and relationships.
+   - Keep the documentation updated as the database evolves, ensuring that it accurately reflects the structure and relationships. 
